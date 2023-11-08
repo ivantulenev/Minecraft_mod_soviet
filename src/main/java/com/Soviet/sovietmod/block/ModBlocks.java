@@ -1,9 +1,7 @@
 package com.Soviet.sovietmod.block;
 
 import com.Soviet.sovietmod.Sovietmod;
-import com.Soviet.sovietmod.block.custom.BreadBlock;
-import com.Soviet.sovietmod.block.custom.ClosetBlock;
-import com.Soviet.sovietmod.block.custom.DiningTableBlock;
+import com.Soviet.sovietmod.block.custom.*;
 import com.Soviet.sovietmod.item.ModItemTab;
 import com.Soviet.sovietmod.item.ModItems;
 import net.minecraft.block.*;
@@ -27,6 +25,10 @@ public class ModBlocks {
             () -> new BreadBlock(AbstractBlock.Properties.of(Material.STONE)));
     public static final RegistryObject<Block> DINING_TABLE = registerBlock("dining_table",
             () -> new DiningTableBlock(AbstractBlock.Properties.of(Material.STONE)));
+    public static final RegistryObject<Block> KETTLE = registerBlock("kettle",
+            () -> new KettleBlock(AbstractBlock.Properties.of(Material.STONE)));
+    public static final RegistryObject<Block> VODKA = registerBlock("vodka",
+            () -> new VodkaBlock(AbstractBlock.Properties.of(Material.STONE)));
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);

@@ -1,12 +1,9 @@
 package com.Soviet.sovietmod;
 
 import com.Soviet.sovietmod.block.ModBlocks;
-import com.Soviet.sovietmod.item.ModItemTab;
 import com.Soviet.sovietmod.item.ModItems;
-
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
-import net.minecraft.scoreboard.ScoreCriteria;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -47,7 +44,8 @@ public class Sovietmod
         RenderTypeLookup.setRenderLayer(ModBlocks.CLOSET.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.BREAD.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.DINING_TABLE.get(), RenderType.cutout());
-
+        RenderTypeLookup.setRenderLayer(ModBlocks.KETTLE.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.VODKA.get(), RenderType.cutout());
     });
     }
 
