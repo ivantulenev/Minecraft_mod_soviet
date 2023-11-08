@@ -3,6 +3,7 @@ package com.Soviet.sovietmod;
 import com.Soviet.sovietmod.block.ModBlocks;
 import com.Soviet.sovietmod.item.ModItemTab;
 import com.Soviet.sovietmod.item.ModItems;
+
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.scoreboard.ScoreCriteria;
@@ -24,8 +25,10 @@ public class Sovietmod
     public Sovietmod()
     {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
+
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
         MinecraftForge.EVENT_BUS.register(this);
@@ -42,6 +45,9 @@ public class Sovietmod
     {
     event.enqueueWork(()->{
         RenderTypeLookup.setRenderLayer(ModBlocks.CLOSET.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.BREAD.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.DINING_TABLE.get(), RenderType.cutout());
+
     });
     }
 

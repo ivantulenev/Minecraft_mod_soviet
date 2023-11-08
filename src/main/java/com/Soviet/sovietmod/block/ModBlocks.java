@@ -1,6 +1,9 @@
 package com.Soviet.sovietmod.block;
 
 import com.Soviet.sovietmod.Sovietmod;
+import com.Soviet.sovietmod.block.custom.BreadBlock;
+import com.Soviet.sovietmod.block.custom.ClosetBlock;
+import com.Soviet.sovietmod.block.custom.DiningTableBlock;
 import com.Soviet.sovietmod.item.ModItemTab;
 import com.Soviet.sovietmod.item.ModItems;
 import net.minecraft.block.*;
@@ -19,8 +22,11 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS
             = DeferredRegister.create(ForgeRegistries.BLOCKS, Sovietmod.MOD_ID);
     public static final RegistryObject<Block> CLOSET = registerBlock("closet",
-            () -> new Block(AbstractBlock.Properties.of(Material.STONE)));
-
+            () -> new ClosetBlock(AbstractBlock.Properties.of(Material.STONE)));
+    public static final RegistryObject<Block> BREAD = registerBlock("bread",
+            () -> new BreadBlock(AbstractBlock.Properties.of(Material.STONE)));
+    public static final RegistryObject<Block> DINING_TABLE = registerBlock("dining_table",
+            () -> new DiningTableBlock(AbstractBlock.Properties.of(Material.STONE)));
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);

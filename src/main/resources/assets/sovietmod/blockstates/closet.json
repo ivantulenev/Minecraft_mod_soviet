@@ -1,5 +1,19 @@
 {
   "variants": {
-    "": {"model": "sovietmod:block/closet"}
+    "facing=east": {
+      "model": "sovietmod:block/closet",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "sovietmod:block/closet"
+    },
+    "facing=south": {
+      "model": "sovietmod:block/closet",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "sovietmod:block/closet",
+      "y": 270
+    }
   }
 }
