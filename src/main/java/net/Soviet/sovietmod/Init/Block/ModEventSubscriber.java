@@ -8,12 +8,12 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.registries.ObjectHolder;
-import net.Soviet.sovietmod.sovietmod;
+import net.Soviet.sovietmod.Sovietmod;
 
-@Mod.EventBusSubscriber(modid = sovietmod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = Sovietmod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEventSubscriber
 {
-    @ObjectHolder(sovietmod.MOD_ID)
+    @ObjectHolder(Sovietmod.MOD_ID)
     public static class ModBlocks {
         public static final Block closet = null;
     }
@@ -21,7 +21,7 @@ public class ModEventSubscriber
     @SubscribeEvent
     public static void onRegisterBlocks(RegistryEvent.Register<Block> event) {
         event.getRegistry().registerAll(
-                new InitBlocks().setRegistryName(sovietmod.MOD_ID, "closet")
+                new InitBlocks().setRegistryName(Sovietmod.MOD_ID, "closet")
         );
     }
 
@@ -29,7 +29,7 @@ public class ModEventSubscriber
     public static void onRegisterItems(RegistryEvent.Register<Item> event) {
         event.getRegistry().registerAll(
                 new BlockItem(ModBlocks.closet, new Item.Properties().tab(ItemGroup.TAB_BUILDING_BLOCKS))
-                        .setRegistryName(sovietmod.MOD_ID, "closet")
+                        .setRegistryName(Sovietmod.MOD_ID, "closet")
         );
     }
 }
