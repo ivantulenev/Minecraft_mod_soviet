@@ -1,7 +1,7 @@
-package com.Soviet.sovietmod;
+package net.Soviet.sovietmod;
 
-import com.Soviet.sovietmod.block.ModBlocks;
-import com.Soviet.sovietmod.item.ModItems;
+import net.Soviet.sovietmod.block.ModBlocks;
+import net.Soviet.sovietmod.item.ModItems;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.common.MinecraftForge;

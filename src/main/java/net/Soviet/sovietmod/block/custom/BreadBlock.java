@@ -1,4 +1,4 @@
-package com.Soviet.sovietmod.block.custom;
+package net.Soviet.sovietmod.block.custom;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
