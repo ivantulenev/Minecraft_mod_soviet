@@ -1,18 +1,18 @@
 {
   "variants": {
     "facing=east": {
-      "model": "sovietmod:block/closet",
+      "model": "sovietmod:block/kettle",
       "y": 90
     },
     "facing=north": {
-      "model": "sovietmod:block/closet"
+      "model": "sovietmod:block/kettle"
     },
     "facing=south": {
-      "model": "sovietmod:block/closet",
+      "model": "sovietmod:block/kettle",
       "y": 180
     },
     "facing=west": {
-      "model": "sovietmod:block/closet",
+      "model": "sovietmod:block/kettle",
       "y": 270
     }
   }
