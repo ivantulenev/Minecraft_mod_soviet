@@ -1,7 +1,7 @@
-package net.Soviet.sovietmod;
+package com.Soviet.sovietmod;
 
-import net.Soviet.sovietmod.block.ModBlocks;
-import net.Soviet.sovietmod.item.ModItems;
+import com.Soviet.sovietmod.block.ModBlocks;
+import com.Soviet.sovietmod.item.ModItems;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.common.MinecraftForge;
@@ -46,6 +46,7 @@ public class Sovietmod
         RenderTypeLookup.setRenderLayer(ModBlocks.DINING_TABLE.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.KETTLE.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.VODKA.get(), RenderType.translucent());
+        RenderTypeLookup.setRenderLayer(ModBlocks.RADIATION_BANNER.get(), RenderType.cutout());
     });
     }
 

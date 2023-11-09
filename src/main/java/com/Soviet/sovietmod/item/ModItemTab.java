@@ -1,4 +1,4 @@
-package net.Soviet.sovietmod.item;
+package com.Soviet.sovietmod.item;
 
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;

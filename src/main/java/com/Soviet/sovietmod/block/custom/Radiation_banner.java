@@ -1,4 +1,4 @@
-package net.Soviet.sovietmod.block.custom;
+package com.Soviet.sovietmod.block.custom;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -14,10 +14,11 @@ import net.minecraft.world.IBlockReader;
 
 import javax.annotation.Nullable;
 
-public class DiningTableBlock extends HorizontalBlock {
+public class Radiation_banner extends HorizontalBlock  {
+
     public static final VoxelShape SHAPE = makeShape();
 
-    public DiningTableBlock(Properties p_i48377_1_) {
+    public Radiation_banner(Properties p_i48377_1_) {
         super(p_i48377_1_);
     }
 
@@ -37,14 +38,17 @@ public class DiningTableBlock extends HorizontalBlock {
         return SHAPE;
     }
 
-    public static VoxelShape makeShape() {
+    public static VoxelShape makeShape(){
         VoxelShape shape = VoxelShapes.empty();
-        shape = VoxelShapes.join(shape, VoxelShapes.box(0.006249999999999999, 0, 0.95, 0.05625, 0.9375, 0.99375), IBooleanFunction.OR);
-        shape = VoxelShapes.join(shape, VoxelShapes.box(0, 0.9375, 0, 1, 1, 1), IBooleanFunction.OR);
-        shape = VoxelShapes.join(shape, VoxelShapes.box(0.006249999999999999, 0, 0.012499999999999956, 0.05625, 0.9375, 0.05625000000000002), IBooleanFunction.OR);
-        shape = VoxelShapes.join(shape, VoxelShapes.box(0.94375, 0, 0.012499999999999956, 0.99375, 0.9375, 0.05625000000000002), IBooleanFunction.OR);
-        shape = VoxelShapes.join(shape, VoxelShapes.box(0.94375, 0, 0.95, 0.99375, 0.9375, 0.99375), IBooleanFunction.OR);
+        shape = VoxelShapes.join(shape, VoxelShapes.box(0.8375, -0.05, 0.4812500000000002, 0.875, 1.0124999999999997, 0.5187500000000002), IBooleanFunction.OR);
+        shape = VoxelShapes.join(shape, VoxelShapes.box(0.19375, 0.93125, 0.475, 0.7937500000000001, 1.05625, 0.525), IBooleanFunction.OR);
+        shape = VoxelShapes.join(shape, VoxelShapes.box(0.40257475625913736, 1.0754101853047735, 0.4765625, 0.5275747562591373, 1.4754101853047745, 0.5234375), IBooleanFunction.OR);
+        shape = VoxelShapes.join(shape, VoxelShapes.box(0.13382475625913737, 1.2629101853047735, 0.4765625, 0.5900747562591384, 1.3941601853047736, 0.5234375), IBooleanFunction.OR);
+        shape = VoxelShapes.join(shape, VoxelShapes.box(0.16507475625913726, 0.9566601853047734, 0.4765625, 0.29632475625913746, 1.4191601853047753, 0.5234375), IBooleanFunction.OR);
+        shape = VoxelShapes.join(shape, VoxelShapes.box(0.2021203552633006, 1.0554285625889874, 0.475, 0.5271203552633015, 1.3116785625889875, 0.525), IBooleanFunction.OR);
 
         return shape;
     }
+
+
 }
