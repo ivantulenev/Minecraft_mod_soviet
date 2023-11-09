@@ -28,7 +28,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> KETTLE = registerBlock("kettle",
             () -> new KettleBlock(AbstractBlock.Properties.of(Material.STONE)));
     public static final RegistryObject<Block> VODKA = registerBlock("vodka",
-            () -> new VodkaBlock(AbstractBlock.Properties.of(Material.STONE)));
+            () -> new VodkaBlock(AbstractBlock.Properties.of(Material.GLASS)));
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);

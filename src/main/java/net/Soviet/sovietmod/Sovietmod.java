@@ -45,7 +45,7 @@ public class Sovietmod
         RenderTypeLookup.setRenderLayer(ModBlocks.BREAD.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.DINING_TABLE.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.KETTLE.get(), RenderType.cutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.VODKA.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.VODKA.get(), RenderType.translucent());
     });
     }
 

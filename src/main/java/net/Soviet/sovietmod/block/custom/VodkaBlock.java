@@ -1,5 +1,6 @@
 package net.Soviet.sovietmod.block.custom;
 
+import net.minecraft.block.AbstractGlassBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
@@ -14,22 +15,11 @@ import net.minecraft.world.IBlockReader;
 
 import javax.annotation.Nullable;
 
-public class VodkaBlock extends HorizontalBlock {
+public class VodkaBlock extends AbstractGlassBlock {
     public static final VoxelShape SHAPE = makeShape();
 
     public VodkaBlock(Properties p_i48377_1_) {
         super(p_i48377_1_);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
-    }
-
-    @Nullable
-    @Override
-    public BlockState getStateForPlacement(BlockItemUseContext context) {
-        return this.getBlock().defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
     @Override
