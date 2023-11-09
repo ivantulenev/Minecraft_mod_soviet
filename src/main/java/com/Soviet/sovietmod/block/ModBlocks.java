@@ -1,9 +1,9 @@
-package net.Soviet.sovietmod.block;
+package com.Soviet.sovietmod.block;
 
-import net.Soviet.sovietmod.Sovietmod;
-import net.Soviet.sovietmod.block.custom.*;
-import net.Soviet.sovietmod.item.ModItemTab;
-import net.Soviet.sovietmod.item.ModItems;
+import com.Soviet.sovietmod.Sovietmod;
+import com.Soviet.sovietmod.block.custom.*;
+import com.Soviet.sovietmod.item.ModItemTab;
+import com.Soviet.sovietmod.item.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;

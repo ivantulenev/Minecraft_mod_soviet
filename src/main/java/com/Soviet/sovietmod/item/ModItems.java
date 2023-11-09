@@ -1,6 +1,6 @@
-package net.Soviet.sovietmod.item;
+package com.Soviet.sovietmod.item;
 
-import net.Soviet.sovietmod.Sovietmod;
+import com.Soviet.sovietmod.Sovietmod;
 import net.minecraft.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
