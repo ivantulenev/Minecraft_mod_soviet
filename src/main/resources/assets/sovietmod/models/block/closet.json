@@ -1,17 +1,17 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "sovietmod:block/texture",
-		"1": "sovietmod:block/redbook",
-		"2": "sovietmod:block/greenbook",
-		"3": "sovietmod:block/brownbook",
-		"4": "sovietmod:block/peurplebook",
-		"5": "sovietmod:block/yellow",
-		"6": "sovietmod:block/gray",
-		"7": "sovietmod:block/white",
-		"8": "sovietmod:block/dark-blue",
-		"10": "sovietmod:block/oldbook",
-		"particle": "sovietmod:block/texture"
+		"0": "sovietmod:block/closet/texture",
+		"1": "sovietmod:block/closet/redbook",
+		"2": "sovietmod:block/closet/greenbook",
+		"3": "sovietmod:block/closet/brownbook",
+		"4": "sovietmod:block/closet/peurplebook",
+		"5": "sovietmod:block/closet/yellow",
+		"6": "sovietmod:block/closet/gray",
+		"7": "sovietmod:block/closet/white",
+		"8": "sovietmod:block/closet/dark-blue",
+		"10": "sovietmod:block/closet/oldbook",
+		"particle": "sovietmod:block/closet/texture"
 	},
 	"elements": [
 		{

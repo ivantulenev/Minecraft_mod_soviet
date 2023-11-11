@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "sovietmod:block/bread",
-		"particle": "sovietmod:block/bread"
+		"0": "sovietmod:block/bread/bread",
+		"particle": "sovietmod:block/bread/bread"
 	},
 	"elements": [
 		{

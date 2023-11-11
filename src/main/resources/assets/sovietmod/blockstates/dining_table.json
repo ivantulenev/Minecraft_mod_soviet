@@ -1,6 +1,9 @@
 {
   "variants": {
-    "": {
+    "part=lower": {
+      "model": "sovietmod:block/dining_table"
+    },
+    "part=upper": {
       "model": "sovietmod:block/dining_table"
     }
   }
