@@ -33,6 +33,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> RADIATION_BANNER = registerBlock("radiation_banner",
             () -> new Radiation_banner(AbstractBlock.Properties.of(Material.METAL)));
 
+    public static final RegistryObject<Block> RADIO = registerBlock("radio",
+            () -> new RadioGorizont(AbstractBlock.Properties.of(Material.WOOD)));
+
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);

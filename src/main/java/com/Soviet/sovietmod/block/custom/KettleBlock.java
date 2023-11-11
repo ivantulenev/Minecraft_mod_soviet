@@ -15,10 +15,10 @@ import net.minecraft.world.IBlockReader;
 import javax.annotation.Nullable;
 
 public class KettleBlock extends HorizontalBlock {
-    public static final VoxelShape SHAPE_N = makeShape_N();
-    public static final VoxelShape SHAPE_S = makeShape_S();
-    public static final VoxelShape SHAPE_W = makeShape_W();
-    public static final VoxelShape SHAPE_E = makeShape_E();
+    public static final VoxelShape SHAPE_S = makeShape_N();
+    public static final VoxelShape SHAPE_N = makeShape_S();
+    public static final VoxelShape SHAPE_E = makeShape_W();
+    public static final VoxelShape SHAPE_W = makeShape_E();
 
     public KettleBlock(Properties p_i48377_1_) {
         super(p_i48377_1_);

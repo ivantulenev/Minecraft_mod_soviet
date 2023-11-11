@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": {
+      "facing=east": {
+        "model": "sovietmod:block/radio",
+        "y": 90
+      },
+      "facing=north": {
+        "model": "sovietmod:block/radio"
+      },
+      "facing=south": {
+        "model": "sovietmod:block/radio",
+        "y": 180
+      },
+      "facing=west": {
+        "model": "sovietmod:block/radio",
+        "y": 270
+      }
+    }
+  }
+}
