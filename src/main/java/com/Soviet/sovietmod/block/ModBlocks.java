@@ -36,6 +36,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> RADIO = registerBlock("radio",
             () -> new RadioGorizont(AbstractBlock.Properties.of(Material.WOOD)));
 
+    public static final RegistryObject<Block> VINYL_RECORD_PLAYER = registerBlock("vinyl_record_player2",
+            () -> new VinylRecordPlayer(AbstractBlock.Properties.of(Material.WOOD)));
+
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);

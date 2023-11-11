@@ -48,7 +48,7 @@ public class Sovietmod
         RenderTypeLookup.setRenderLayer(ModBlocks.VODKA.get(), RenderType.translucent());
         RenderTypeLookup.setRenderLayer(ModBlocks.RADIATION_BANNER.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.RADIO.get(), RenderType.cutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.DOUBLE_BLOCK.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.VINYL_RECORD_PLAYER.get(), RenderType.translucent());
     });
     }
 
