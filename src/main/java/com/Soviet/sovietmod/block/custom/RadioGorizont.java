@@ -53,30 +53,22 @@ public class RadioGorizont extends HorizontalBlock {
         }
     }
 
-    public static VoxelShape makeShape_S(){
-        VoxelShape shape = VoxelShapes.empty();
-        shape = VoxelShapes.join(Block.box(2.9999999999999982,
+    public static VoxelShape makeShape_N(){
+        return VoxelShapes.join(Block.box(2.9999999999999982,
                 0, 2, 13.4, 8, 4.9),
                 Block.box(12.3, 8, 4, 12.6, 13.8,
                         4.199999999999999), IBooleanFunction.OR);
-        return shape;
-    }
-
-    public static VoxelShape makeShape_W(){
-        VoxelShape shape = VoxelShapes.empty();
-        shape =VoxelShapes.join(Block.box(11.1, 0, 2.9999999999999982, 14, 8, 13.4), Block.box(11.8, 8, 12.3, 12, 13.8, 12.6), IBooleanFunction.OR);
-        return shape;
-    }
-
-    public static VoxelShape makeShape_N(){
-        VoxelShape shape = VoxelShapes.empty();
-        shape = VoxelShapes.join(Block.box(2.5999999999999996, 0, 11.1, 13.000000000000002, 8, 14), Block.box(3.4000000000000004, 8, 11.8, 3.6999999999999993, 13.8, 12), IBooleanFunction.OR) ;
-        return shape;
     }
 
     public static VoxelShape makeShape_E(){
-        VoxelShape shape = VoxelShapes.empty();
-        shape = VoxelShapes.join(Block.box(2, 0, 2.5999999999999996, 4.9, 8, 13.000000000000002), Block.box(4, 8, 3.4000000000000004, 4.199999999999999, 13.8, 3.6999999999999993), IBooleanFunction.OR) ;
-        return shape;
+        return VoxelShapes.join(Block.box(11.1, 0, 2.9999999999999982, 14, 8, 13.4), Block.box(11.8, 8, 12.3, 12, 13.8, 12.6), IBooleanFunction.OR);
+    }
+
+    public static VoxelShape makeShape_S(){
+        return VoxelShapes.join(Block.box(2.5999999999999996, 0, 11.1, 13.000000000000002, 8, 14), Block.box(3.4000000000000004, 8, 11.8, 3.6999999999999993, 13.8, 12), IBooleanFunction.OR);
+    }
+
+    public static VoxelShape makeShape_W(){
+        return VoxelShapes.join(Block.box(2, 0, 2.5999999999999996, 4.9, 8, 13.000000000000002), Block.box(4, 8, 3.4000000000000004, 4.199999999999999, 13.8, 3.6999999999999993), IBooleanFunction.OR);
     }
 }
