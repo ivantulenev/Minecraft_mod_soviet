@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "sovietmod:block/radiation_banner",
+      "y": 90
+    },
+    "facing=north": {
       "model": "sovietmod:block/radiation_banner"
+    },
+    "facing=south": {
+      "model": "sovietmod:block/radiation_banner",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "sovietmod:block/radiation_banner",
+      "y": 270
     }
   }
 }

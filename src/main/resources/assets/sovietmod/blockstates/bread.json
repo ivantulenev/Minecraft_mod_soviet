@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "sovietmod:block/bread",
+      "y": 90
+    },
+    "facing=north": {
       "model": "sovietmod:block/bread"
+    },
+    "facing=south": {
+      "model": "sovietmod:block/bread",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "sovietmod:block/bread",
+      "y": 270
     }
   }
 }
