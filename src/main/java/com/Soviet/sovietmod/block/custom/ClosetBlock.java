@@ -11,6 +11,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.*;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
@@ -23,6 +24,11 @@ public class ClosetBlock extends HorizontalBlock {
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return SHAPE;
+    }
+
+    @Override
+    public void onPlace(BlockState p_220082_1_, World p_220082_2_, BlockPos p_220082_3_, BlockState p_220082_4_, boolean p_220082_5_) {
+        super.onPlace(p_220082_1_, p_220082_2_, p_220082_3_, p_220082_4_, p_220082_5_);
     }
 
     @Override
