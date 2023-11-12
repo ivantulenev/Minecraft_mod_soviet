@@ -31,18 +31,29 @@ public class ModBlocks {
             () -> new VodkaBlock(AbstractBlock.Properties.of(Material.GLASS)));
 
     public static final RegistryObject<Block> RADIATION_BANNER = registerBlock("radiation_banner",
-            () -> new Radiation_banner(AbstractBlock.Properties.of(Material.METAL)));
+            () -> new RadiationBannerBlock(AbstractBlock.Properties.of(Material.METAL)));
 
     public static final RegistryObject<Block> RADIO = registerBlock("radio",
-            () -> new RadioGorizont(AbstractBlock.Properties.of(Material.WOOD)));
+            () -> new RadioGorizontBlock(AbstractBlock.Properties.of(Material.WOOD)));
 
     public static final RegistryObject<Block> VINYL_RECORD_PLAYER = registerBlock("vinyl_record_player2",
-            () -> new VinylRecordPlayer(AbstractBlock.Properties.of(Material.WOOD)));
+            () -> new VinylRecordPlayerBlock(AbstractBlock.Properties.of(Material.WOOD)));
+    public static final RegistryObject<Block> VINYL_RECORD_PLAYER_KINO = registerBlock("vinyl_record_player_kino",
+            () -> new VinylRecordPlayerKinoBlock(AbstractBlock.Properties.of(Material.WOOD)));
     public static final RegistryObject<Block> DOUBLE_TABLE = registerBlock("double_table",
             () -> new DoubleTableBlock(AbstractBlock.Properties.of(Material.WOOD)));
     public static final RegistryObject<Block> DOUBLE_RIGHT_TABLE = registerBlock("double_right_table",
             () -> new DoubleTableRightBlock(AbstractBlock.Properties.of(Material.WOOD)));
-
+    public static final RegistryObject<Block> PLATE = registerBlock("plate",
+            () -> new PlateBlock(AbstractBlock.Properties.of(Material.WOOD)));
+    public static final RegistryObject<Block> CONDENSED_MILK = registerBlock("can_of_condensed_milk",
+            () -> new CondensedMilkBlock(AbstractBlock.Properties.of(Material.WOOD)));
+    public static final RegistryObject<Block> CUT_GLASS = registerBlock("cut_glass",
+            () -> new CutGlassBlock(AbstractBlock.Properties.of(Material.WOOD)));
+    public static final RegistryObject<Block> KOLBASA = registerBlock("kolbasa",
+            () -> new KolbasaBlock(AbstractBlock.Properties.of(Material.WOOD)));
+    public static final RegistryObject<Block> SHOT_GLASS = registerBlock("shot_glass",
+            () -> new ShotGlassBlock(AbstractBlock.Properties.of(Material.WOOD)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
@@ -54,6 +65,7 @@ public class ModBlocks {
         ModItems.ITEMS.register(name, () -> new BlockItem(block.get(),
                 new Item.Properties().tab(ModItemTab.FURNITURE)));
     }
+
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
     }

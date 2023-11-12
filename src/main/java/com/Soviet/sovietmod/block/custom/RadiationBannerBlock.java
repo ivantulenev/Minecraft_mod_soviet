@@ -15,14 +15,14 @@ import net.minecraft.world.IBlockReader;
 import javax.annotation.Nullable;
 import java.util.stream.Stream;
 
-public class Radiation_banner extends HorizontalBlock  {
+public class RadiationBannerBlock extends HorizontalBlock  {
 
     public static final VoxelShape SHAPE_S = makeShape_S();
     public static final VoxelShape SHAPE_N = makeShape_N();
     public static final VoxelShape SHAPE_E = makeShape_E();
     public static final VoxelShape SHAPE_W = makeShape_W();
 
-    public Radiation_banner(Properties p_i48377_1_) {
+    public RadiationBannerBlock(Properties p_i48377_1_) {
         super(p_i48377_1_);
     }
 

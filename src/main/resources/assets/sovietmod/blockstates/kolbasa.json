@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "sovietmod:block/kolbasa",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "sovietmod:block/kolbasa"
+    },
+    "facing=south": {
+      "model": "sovietmod:block/kolbasa",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "sovietmod:block/kolbasa",
+      "y": 270
+    }
+  }
+}

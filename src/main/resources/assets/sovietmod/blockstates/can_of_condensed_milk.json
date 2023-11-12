@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "sovietmod:block/can_of_condensed_milk",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "sovietmod:block/can_of_condensed_milk"
+    },
+    "facing=south": {
+      "model": "sovietmod:block/can_of_condensed_milk",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "sovietmod:block/can_of_condensed_milk",
+      "y": 270
+    }
+  }
+}

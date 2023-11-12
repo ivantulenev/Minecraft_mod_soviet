@@ -14,7 +14,7 @@ import net.minecraft.world.IBlockReader;
 
 import javax.annotation.Nullable;
 
-public class RadioGorizont extends HorizontalBlock {
+public class RadioGorizontBlock extends HorizontalBlock {
 
     public static final VoxelShape RADIO_N = makeShape_N();
 
@@ -24,7 +24,7 @@ public class RadioGorizont extends HorizontalBlock {
 
     public static final VoxelShape RADIO_E = makeShape_E();
 
-    public RadioGorizont(Properties p_i48377_1_) {
+    public RadioGorizontBlock(Properties p_i48377_1_) {
         super(p_i48377_1_);
     }
 
