@@ -1,6 +1,9 @@
 {
 	"variants": {
-		"": {
+		"locked=true": {
+			"model": "sovietmod:block/vinyl_record_player"
+		},
+		"locked=false": {
 			"model": "sovietmod:block/vinyl_record_player2"
 		}
 	}

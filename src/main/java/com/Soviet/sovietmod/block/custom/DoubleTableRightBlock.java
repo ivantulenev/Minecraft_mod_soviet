@@ -11,27 +11,24 @@ import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.EnumProperty;
+import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IWorld;
-import net.minecraft.state.StateContainer;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class DoubleTableBlock extends HorizontalBlock {
+public class DoubleTableRightBlock extends HorizontalBlock {
     public static final EnumProperty<DoubleTablePart> TABLE_PART = EnumProperty.create("part", DoubleTablePart.class);
     public static final BooleanProperty OCCUPIED = BlockStateProperties.OCCUPIED;
 
-    public DoubleTableBlock(Properties p_i48377_1_) {
+    public DoubleTableRightBlock(Properties p_i48377_1_) {
         super(p_i48377_1_);
-        registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH).setValue(TABLE_PART, DoubleTablePart.LOWER));
+        registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH).setValue(TABLE_PART, DoubleTablePart.RIGHT));
     }
 
 
@@ -39,26 +36,26 @@ public class DoubleTableBlock extends HorizontalBlock {
     public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos) {
         BlockPos blockpos = pos.below();
         BlockState blockstate = worldIn.getBlockState(blockpos);
-        return state.getValue(TABLE_PART) == DoubleTablePart.LOWER ? blockstate.isFaceSturdy(worldIn, blockpos, Direction.UP) : blockstate.is(this);
+        return state.getValue(TABLE_PART) == DoubleTablePart.RIGHT ? blockstate.isFaceSturdy(worldIn, blockpos, Direction.UP) : blockstate.is(this);
     }
 
     @Nullable
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         BlockPos blockpos = context.getClickedPos();
-        if (blockpos.getY() < 255 && context.getLevel().getBlockState(blockpos.above()).canBeReplaced(context)) {
-            return getStateDefinition().any().setValue(FACING, context.getHorizontalDirection()).setValue(TABLE_PART, DoubleTablePart.LOWER);
+        if (blockpos.getY() < 255 && context.getLevel().getBlockState(blockpos.east()).canBeReplaced(context)) {
+            return getStateDefinition().any().setValue(FACING, context.getHorizontalDirection()).setValue(TABLE_PART, DoubleTablePart.RIGHT);
         } else {
             return null;
         }
     }
 
     private static Direction getNeighbourDirection(DoubleTablePart p_208070_0_, Direction p_208070_1_) {
-        return p_208070_0_ == DoubleTablePart.LOWER ? p_208070_1_ : p_208070_1_.getOpposite();
+        return p_208070_0_ == DoubleTablePart.RIGHT ? p_208070_1_ : p_208070_1_.getOpposite();
     }
 
     @Override
     public void setPlacedBy(World world, BlockPos pos, BlockState state, @Nullable LivingEntity entity, ItemStack stack) {
-        world.setBlock(pos.above(),state.setValue(TABLE_PART, DoubleTablePart.UPPER), 3);
+        world.setBlock(pos.east(), state.setValue(TABLE_PART, DoubleTablePart.LEFT), 3);
     }
 
     @Override
@@ -70,17 +67,17 @@ public class DoubleTableBlock extends HorizontalBlock {
     public void playerWillDestroy(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
         if (!worldIn.isClientSide && player.isCreative()) {
             DoubleTablePart doubletablepart = state.getValue(TABLE_PART);
-            if(doubletablepart == DoubleTablePart.UPPER) {
-                BlockPos blockPos = pos.below();
+            if (doubletablepart == DoubleTablePart.LEFT) {
+                BlockPos blockPos = pos.west();
                 BlockState blockState = worldIn.getBlockState(blockPos);
-                if(blockState.getBlock()==state.getBlock()&&blockState.getValue(TABLE_PART)==DoubleTablePart.LOWER){
+                if (blockState.getBlock() == state.getBlock() && blockState.getValue(TABLE_PART) == DoubleTablePart.RIGHT) {
                     worldIn.setBlock(blockPos, Blocks.AIR.defaultBlockState(), 35);
                 }
             }
-            if(doubletablepart == DoubleTablePart.LOWER) {
-                BlockPos blockPos = pos.above();
+            if (doubletablepart == DoubleTablePart.RIGHT) {
+                BlockPos blockPos = pos.east();
                 BlockState blockState = worldIn.getBlockState(blockPos);
-                if(blockState.getBlock()==state.getBlock()&&blockState.getValue(TABLE_PART)==DoubleTablePart.UPPER){
+                if (blockState.getBlock() == state.getBlock() && blockState.getValue(TABLE_PART) == DoubleTablePart.LEFT) {
                     worldIn.setBlock(blockPos, Blocks.AIR.defaultBlockState(), 35);
                 }
             }
@@ -89,17 +86,9 @@ public class DoubleTableBlock extends HorizontalBlock {
     }
 
 
-    public BlockState updateShape(BlockState p_196271_1_, Direction p_196271_2_, BlockState p_196271_3_, IWorld p_196271_4_, BlockPos p_196271_5_, BlockPos p_196271_6_) {
-        if (p_196271_2_ == getNeighbourDirection(p_196271_1_.getValue(TABLE_PART), p_196271_1_.getValue(FACING))) {
-            return p_196271_3_.is(this) && p_196271_3_.getValue(TABLE_PART) != p_196271_1_.getValue(TABLE_PART) ? p_196271_1_.setValue(OCCUPIED, p_196271_3_.getValue(OCCUPIED)) : Blocks.AIR.defaultBlockState();
-        } else {
-            return super.updateShape(p_196271_1_, p_196271_2_, p_196271_3_, p_196271_4_, p_196271_5_, p_196271_6_);
-        }
-    }
-
     public enum DoubleTablePart implements IStringSerializable {
-        LOWER("lower"),
-        UPPER("upper");
+        RIGHT("right"),
+        LEFT("left");
 
         private final String name;
 

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "part=left": {
+      "model": "sovietmod:block/dining_table"
+    },
+    "part=right": {
+      "model": "sovietmod:block/dining_table"
+    }
+  }
+}

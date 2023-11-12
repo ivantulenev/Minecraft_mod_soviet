@@ -38,6 +38,10 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> VINYL_RECORD_PLAYER = registerBlock("vinyl_record_player2",
             () -> new VinylRecordPlayer(AbstractBlock.Properties.of(Material.WOOD)));
+    public static final RegistryObject<Block> DOUBLE_TABLE = registerBlock("double_table",
+            () -> new DoubleTableBlock(AbstractBlock.Properties.of(Material.WOOD)));
+    public static final RegistryObject<Block> DOUBLE_RIGHT_TABLE = registerBlock("double_right_table",
+            () -> new DoubleTableRightBlock(AbstractBlock.Properties.of(Material.WOOD)));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
