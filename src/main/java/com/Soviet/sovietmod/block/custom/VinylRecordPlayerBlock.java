@@ -1,12 +1,21 @@
 package com.Soviet.sovietmod.block.custom;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.HorizontalBlock;
+import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.block.*;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.MusicDiscItem;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
+import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.stats.Stats;
+import net.minecraft.tileentity.JukeboxTileEntity;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -15,41 +24,106 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class VinylRecordPlayerBlock extends HorizontalBlock {
+public class VinylRecordPlayerBlock extends JukeboxBlock {
 
     public static final VoxelShape SHAPE = makeShape();
     public static final BooleanProperty LOCKED = BooleanProperty.create("locked");
+    public static final BooleanProperty HAS_RECORD = BlockStateProperties.HAS_RECORD;
 
     public VinylRecordPlayerBlock(Properties p_i48377_1_) {
         super(p_i48377_1_);
-        registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH).setValue(LOCKED, false));
+        registerDefaultState(this.getStateDefinition().any().setValue(LOCKED, false)
+                .setValue(HAS_RECORD, Boolean.FALSE));
     }
 
     @Override
     protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
-        builder.add(LOCKED, FACING);
-    }
-
-    @Nullable
-    @Override
-    public BlockState getStateForPlacement(BlockItemUseContext context) {
-        return this.getBlock().defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+        builder.add(LOCKED, HAS_RECORD);
     }
 
     @Override
+    public void setPlacedBy(World world, BlockPos pos, BlockState state, @Nullable LivingEntity livingEntity, ItemStack stack) {
+        super.setPlacedBy(world, pos, state, livingEntity, stack);
+        CompoundNBT compoundnbt = stack.getOrCreateTag();
+        if (compoundnbt.contains("BlockEntityTag")) {
+            CompoundNBT compoundnbt1 = compoundnbt.getCompound("BlockEntityTag");
+            if (compoundnbt1.contains("RecordItem")) {
+                world.setBlock(pos, state.setValue(HAS_RECORD, Boolean.TRUE), 2);
+            }
+        }
+
+    }
+
+    @Override
+    @MethodsReturnNonnullByDefault
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return SHAPE;
     }
 
+    private void dropRecording(World world, BlockPos pos) {
+        if (!world.isClientSide) {
+            TileEntity tileentity = world.getBlockEntity(pos);
+            if (tileentity instanceof JukeboxTileEntity) {
+                JukeboxTileEntity jukeboxtileentity = (JukeboxTileEntity) tileentity;
+                ItemStack itemstack = jukeboxtileentity.getRecord();
+                if (!itemstack.isEmpty()) {
+                    world.levelEvent(1010, pos, 0);
+                    jukeboxtileentity.clearContent();
+                    float f = 0.7F;
+                    double d0 = (double) (world.random.nextFloat() * 0.7F) + (double) 0.15F;
+                    double d1 = (double) (world.random.nextFloat() * 0.7F) + (double) 0.060000002F + 0.6D;
+                    double d2 = (double) (world.random.nextFloat() * 0.7F) + (double) 0.15F;
+                    ItemStack itemstack1 = itemstack.copy();
+                    ItemEntity itementity = new ItemEntity(world, (double) pos.getX() + d0, (double) pos.getY() + d1, (double) pos.getZ() + d2, itemstack1);
+                    itementity.setDefaultPickUpDelay();
+                    world.addFreshEntity(itementity);
+                }
+            }
+        }
+    }
+
     @Override
-    public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity playerEntity, Hand hand, BlockRayTraceResult result) {
+    public void setRecord(IWorld world, BlockPos pos, BlockState state, ItemStack stack) {
+        TileEntity tileentity = world.getBlockEntity(pos);
+        if (tileentity instanceof JukeboxTileEntity) {
+            ((JukeboxTileEntity) tileentity).setRecord(stack.copy());
+            world.setBlock(pos, state.setValue(HAS_RECORD, Boolean.TRUE), 2);
+        }
+    }
+
+    @Override
+    public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult result) {
+        if (state.getValue(HAS_RECORD)) {
+            this.dropRecording(world, pos);
+            state = state.setValue(HAS_RECORD, Boolean.FALSE);
+            world.setBlock(pos, state, 2);
+            return ActionResultType.sidedSuccess(world.isClientSide);
+        }
+        if (player.getItemInHand(hand).getItem() instanceof MusicDiscItem && !state.getValue(LOCKED)) {
+            state = state.setValue(HAS_RECORD, Boolean.TRUE);
+            world.setBlock(pos, state, 2);
+            this.setRecord(world, pos, state, player.getItemInHand(hand));
+            world.levelEvent(null, 1010, pos, Item.getId(player.getItemInHand(hand).getItem()));
+            player.getItemInHand(hand).shrink(1);
+            player.awardStat(Stats.PLAY_RECORD);
+            return ActionResultType.sidedSuccess(world.isClientSide);
+        }
         state = state.cycle(LOCKED);
         world.setBlock(pos, state, 10);
         return ActionResultType.sidedSuccess(world.isClientSide);
+    }
+
+    @Override
+    public void onRemove(BlockState state, World world, BlockPos pos, BlockState state1, boolean b) {
+        if (!state.is(state1.getBlock())) {
+            this.dropRecording(world, pos);
+            super.onRemove(state, world, pos, state1, b);
+        }
     }
 
     public static VoxelShape makeShape() {

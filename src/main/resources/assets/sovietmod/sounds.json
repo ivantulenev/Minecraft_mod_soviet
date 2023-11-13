@@ -1,3 +1,11 @@
 {
-
+  "kino_peremen": {
+    "subtitle": "sounds.sovietmod.kino_peremen",
+    "sounds": [
+      {
+        "name": "sovietmod:kino_peremen",
+        "stream": true
+      }
+    ]
+  }
 }

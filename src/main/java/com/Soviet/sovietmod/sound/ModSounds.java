@@ -11,6 +11,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class ModSounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, "sovietmod");
+    public static final RegistryObject<SoundEvent> KINO_PEREMEN = registerSoundEvent("kino_peremen");
 
     public static RegistryObject<SoundEvent> registerSoundEvent(String name) {
         return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(Sovietmod.MOD_ID, name)));
