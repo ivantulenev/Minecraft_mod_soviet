@@ -16,9 +16,25 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, Sovietmod.MOD_ID);
+
     public static final RegistryObject<Item> KINO_PEREMEN_DISC = ITEMS.register("kino_peremen",
             () -> new MusicDiscItem(1, ModSounds.KINO_PEREMEN,
-                    (new Item.Properties()).stacksTo(1).rarity(Rarity.RARE)));
+                    (new Item.Properties()).stacksTo(1).tab(ModItemTab.FURNITURE).rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> KINO_GPUPA_KROVI = ITEMS.register("grupa_krovi",
+            () -> new MusicDiscItem(1, ModSounds.KINO_GRUPA_KROVI,
+                    (new Item.Properties()).stacksTo(1).tab(ModItemTab.FURNITURE).rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> KINO_SPOKOINOGO_SNA = ITEMS.register("spokoinogo_sna",
+            () -> new MusicDiscItem(1, ModSounds.KINO_SPOKOINOGO_SNA,
+                    (new Item.Properties()).stacksTo(1).tab(ModItemTab.FURNITURE).rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> KINO_PACHKA_SIGARET = ITEMS.register("pachka_sigaret",
+            () -> new MusicDiscItem(1, ModSounds.KINO_PACHKA_SIGARET,
+                    (new Item.Properties()).stacksTo(1).tab(ModItemTab.FURNITURE).rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> KINO_KONCHITSA_LETO = ITEMS.register("konchitsa_leto",
+            () -> new MusicDiscItem(1, ModSounds.KINO_KONCHITSA_LETO,
+                    (new Item.Properties()).stacksTo(1).tab(ModItemTab.FURNITURE).rarity(Rarity.RARE)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

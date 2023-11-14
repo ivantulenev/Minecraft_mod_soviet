@@ -10,5 +10,10 @@
   "block.sovietmod.plate": "Plate",
   "block.sovietmod.can_of_condensed_milk": "Can of condensed milk",
   "block.sovietmod.vinyl_record_player_kino": "Vinyl record player of Kino",
-  "block.sovietmod.kolbasa": "Sausage"
+  "block.sovietmod.kolbasa": "Sausage",
+  "item.sovietmod.grupa_krovi": "Grupa krovi",
+  "item.sovietmod.kino_peremem": "Peremen",
+  "item.sovietmod.spokoinogo_sna": "Spokoinogo sna",
+  "item.sovietmod.pachka_sigaret": "Pachka sigaret",
+  "item.sovietmod.konchitsa_leto": "Konchitsa leto"
 }

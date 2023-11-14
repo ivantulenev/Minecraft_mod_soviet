@@ -7,5 +7,41 @@
         "stream": true
       }
     ]
+  },
+  "grupa_krovi": {
+    "subtitle": "sounds.sovietmod.grupa_krovi",
+    "sounds": [
+      {
+        "name": "sovietmod:grupa_krovi",
+        "stream": true
+      }
+    ]
+  },
+  "spokoinogo_sna": {
+    "subtitle": "sounds.sovietmod.spokoinogo_sna",
+    "sounds": [
+      {
+        "name": "sovietmod:spokoinogo_sna",
+        "stream": true
+      }
+    ]
+  },
+  "pachka_sigaret": {
+    "subtitle": "sounds.sovietmod.pachka_sigaret",
+    "sounds": [
+      {
+        "name": "sovietmod:pachka_sigaret",
+        "stream": true
+      }
+    ]
+  },
+  "konchitsa_leto": {
+    "subtitle": "sounds.sovietmod.konchitsa_leto",
+    "sounds": [
+      {
+        "name": "sovietmod:konchitsa_leto",
+        "stream": true
+      }
+    ]
   }
 }

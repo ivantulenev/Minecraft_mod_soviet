@@ -10,5 +10,10 @@
   "block.sovietmod.plate": "Тарелка",
   "block.sovietmod.can_of_condensed_milk": "Сгущенка",
   "block.sovietmod.vinyl_record_player_kino": "Проигрыватель виниловых пластинок Кино",
-  "block.sovietmod.kolbasa": "Колбаса"
+  "block.sovietmod.kolbasa": "Колбаса",
+  "item.sovietmod.grupa_krovi": "Группа крови",
+  "item.sovietmod.spokoinogo_sna": "Спокойного сна",
+  "item.sovietmod.pachka_sigaret": "Пачка сигарет",
+  "item.sovietmod.kino_peremem": "Перемен",
+  "item.sovietmod.konchitsa_leto": "Кончится лето"
 }

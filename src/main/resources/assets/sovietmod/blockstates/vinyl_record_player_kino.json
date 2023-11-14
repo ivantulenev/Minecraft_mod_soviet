@@ -2,18 +2,19 @@
   "variants": {
     "facing=east": {
       "model": "sovietmod:block/vinyl_record_player_kino",
-      "y": 90
+      "y": 270
     },
     "facing=north": {
-      "model": "sovietmod:block/vinyl_record_player_kino"
-    },
-    "facing=south": {
       "model": "sovietmod:block/vinyl_record_player_kino",
       "y": 180
     },
+    "facing=south": {
+      "model": "sovietmod:block/vinyl_record_player_kino"
+
+    },
     "facing=west": {
       "model": "sovietmod:block/vinyl_record_player_kino",
-      "y": 270
+      "y": 90
     }
   }
 }
