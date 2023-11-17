@@ -33,6 +33,7 @@ public class VinylRecordPlayerBlock extends JukeboxBlock {
 
     public static final VoxelShape SHAPE = makeShape();
     public static final BooleanProperty LOCKED = BooleanProperty.create("locked");
+
     public static final BooleanProperty HAS_RECORD = BlockStateProperties.HAS_RECORD;
 
     public VinylRecordPlayerBlock(Properties p_i48377_1_) {
@@ -107,6 +108,7 @@ public class VinylRecordPlayerBlock extends JukeboxBlock {
         if (player.getItemInHand(hand).getItem() instanceof MusicDiscItem && !state.getValue(LOCKED)) {
             state = state.setValue(HAS_RECORD, Boolean.TRUE);
             world.setBlock(pos, state, 2);
+            /*world.setBlock(pos,state, )*/;
             this.setRecord(world, pos, state, player.getItemInHand(hand));
             world.levelEvent(null, 1010, pos, Item.getId(player.getItemInHand(hand).getItem()));
             player.getItemInHand(hand).shrink(1);

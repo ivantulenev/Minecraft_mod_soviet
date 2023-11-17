@@ -47,13 +47,15 @@ public class ModBlocks {
     public static final RegistryObject<Block> PLATE = registerBlock("plate",
             () -> new PlateBlock(AbstractBlock.Properties.of(Material.WOOD)));
     public static final RegistryObject<Block> CONDENSED_MILK = registerBlock("can_of_condensed_milk",
-            () -> new CondensedMilkBlock(AbstractBlock.Properties.of(Material.WOOD)));
+            () -> new CondensedMilkBlock(AbstractBlock.Properties.of(Material.METAL)));
     public static final RegistryObject<Block> CUT_GLASS = registerBlock("cut_glass",
-            () -> new CutGlassBlock(AbstractBlock.Properties.of(Material.WOOD)));
+            () -> new CutGlassBlock(AbstractBlock.Properties.of(Material.GLASS)));
     public static final RegistryObject<Block> KOLBASA = registerBlock("kolbasa",
-            () -> new KolbasaBlock(AbstractBlock.Properties.of(Material.WOOD)));
+            () -> new KolbasaBlock(AbstractBlock.Properties.of(Material.CAKE)));
     public static final RegistryObject<Block> SHOT_GLASS = registerBlock("shot_glass",
-            () -> new ShotGlassBlock(AbstractBlock.Properties.of(Material.WOOD)));
+            () -> new ShotGlassBlock(AbstractBlock.Properties.of(Material.GLASS)));
+    public static final RegistryObject<Block> CONCRETE_WASTE = registerBlock("concrete_waste",
+            () -> new ConcreteWasteBlock(AbstractBlock.Properties.of(Material.STONE)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

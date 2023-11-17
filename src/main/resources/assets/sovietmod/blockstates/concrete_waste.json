@@ -1,0 +1,19 @@
+{
+	"variants": {
+		"facing=east": {
+			"model": "sovietmod:block/concrete_waste",
+			"y": 90
+		},
+		"facing=north": {
+			"model": "sovietmod:block/concrete_waste"
+		},
+		"facing=south": {
+			"model": "sovietmod:block/concrete_waste",
+			"y": 180
+		},
+		"facing=west": {
+			"model": "sovietmod:block/concrete_waste",
+			"y": 270
+		}
+	}
+}

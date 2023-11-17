@@ -53,6 +53,7 @@ public class Sovietmod {
             RenderTypeLookup.setRenderLayer(ModBlocks.CUT_GLASS.get(), RenderType.translucent());
             RenderTypeLookup.setRenderLayer(ModBlocks.KOLBASA.get(), RenderType.translucent());
             RenderTypeLookup.setRenderLayer(ModBlocks.SHOT_GLASS.get(), RenderType.translucent());
+            RenderTypeLookup.setRenderLayer(ModBlocks.CONCRETE_WASTE.get(), RenderType.cutout());
         });
     }
 
