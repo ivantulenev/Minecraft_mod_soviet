@@ -16,18 +16,18 @@
       "y": 90
     },
     "facing=east,has_record=true,locked=true": {
-      "model": "sovietmod:block/vinyl_record_player_kino",
+      "model": "sovietmod:block/vinyl_record_player_kino2",
       "y": 270
     },
     "facing=north,has_record=true,locked=true": {
-      "model": "sovietmod:block/vinyl_record_player_kino",
+      "model": "sovietmod:block/vinyl_record_player_kino2",
       "y": 180
     },
     "facing=south,has_record=true,locked=true": {
-      "model": "sovietmod:block/vinyl_record_player_kino"
+      "model": "sovietmod:block/vinyl_record_player_kino2"
     },
     "facing=west,has_record=true,locked=true": {
-      "model": "sovietmod:block/vinyl_record_player_kino",
+      "model": "sovietmod:block/vinyl_record_player_kino2",
       "y": 90
     },
     "facing=east,has_record=false,locked=true": {

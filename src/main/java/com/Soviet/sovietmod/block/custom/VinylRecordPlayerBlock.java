@@ -4,6 +4,7 @@ import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.JukeboxBlock;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.Pose;
 import net.minecraft.entity.item.ItemEntity;
@@ -61,6 +62,7 @@ public class VinylRecordPlayerBlock extends JukeboxBlock {
     public BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
+
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
@@ -122,14 +124,15 @@ public class VinylRecordPlayerBlock extends JukeboxBlock {
     @Override
     public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult result) {
         System.out.println("use");
-        if (state.getValue(HAS_RECORD)) {
+        if (state.getValue(HAS_RECORD) && !Screen.hasShiftDown() && !state.getValue(LOCKED)) {
             this.dropRecording(world, pos);
             state = state.setValue(HAS_RECORD, Boolean.FALSE);
             world.setBlock(pos, state, 2);
             return ActionResultType.sidedSuccess(world.isClientSide);
         }
 
-        if (player.getItemInHand(hand).getItem() instanceof MusicDiscItem && !state.getValue(LOCKED) && !state.getValue(HAS_RECORD)) {
+        if (player.getItemInHand(hand).getItem() instanceof MusicDiscItem && !state.getValue(LOCKED)
+                && !state.getValue(HAS_RECORD) && !Screen.hasShiftDown()) {
             state = state.setValue(HAS_RECORD, Boolean.TRUE);
             world.setBlock(pos, state, 2);
             /*world.setBlock(pos,state, )*/
@@ -142,7 +145,7 @@ public class VinylRecordPlayerBlock extends JukeboxBlock {
         }
 
         state = state.cycle(LOCKED);
-        world.setBlock(pos, state, 10);
+        world.setBlock(pos, state, 2);
         return ActionResultType.sidedSuccess(world.isClientSide);
     }
 
