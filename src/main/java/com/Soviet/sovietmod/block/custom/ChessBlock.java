@@ -38,8 +38,6 @@ public class ChessBlock extends HorizontalBlock {
     }
 
     public static VoxelShape makeShape() {
-        VoxelShape shape = VoxelShapes.empty();
-        Block.box(2, 0, 2, 14, 0.3999999999999999, 14);
-        return shape;
+        return Block.box(2, 0, 2, 14, 0.4, 14);
     }
 }

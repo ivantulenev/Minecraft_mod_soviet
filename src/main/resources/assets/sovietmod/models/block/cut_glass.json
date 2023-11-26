@@ -1,7 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "sovietmod:dlock/cut_glass/cut_glass",
+		"0": "sovietmod:block/cut_glass/cut_glass",
 		"particle": "sovietmod:block/cut_glass/cut_glass"
 	},
 	"elements": [
