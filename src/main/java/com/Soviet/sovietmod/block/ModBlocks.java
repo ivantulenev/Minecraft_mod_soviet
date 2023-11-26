@@ -2,11 +2,13 @@ package com.Soviet.sovietmod.block;
 
 import com.Soviet.sovietmod.Sovietmod;
 import com.Soviet.sovietmod.block.custom.*;
+import com.Soviet.sovietmod.item.ModFoods;
 import com.Soviet.sovietmod.item.ModItemTab;
 import com.Soviet.sovietmod.item.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -46,12 +48,12 @@ public class ModBlocks {
             () -> new DoubleTableRightBlock(AbstractBlock.Properties.of(Material.WOOD)));
     public static final RegistryObject<Block> PLATE = registerBlock("plate",
             () -> new PlateBlock(AbstractBlock.Properties.of(Material.WOOD)));
-    public static final RegistryObject<Block> CONDENSED_MILK = registerBlock("can_of_condensed_milk",
-            () -> new CondensedMilkBlock(AbstractBlock.Properties.of(Material.METAL)));
+    public static final RegistryObject<Block> CONDENSED_MILK = registerFoodBlock("can_of_condensed_milk",
+            () -> new CondensedMilkBlock(AbstractBlock.Properties.of(Material.METAL)), ModFoods.CONDENSED_MILK);
     public static final RegistryObject<Block> CUT_GLASS = registerBlock("cut_glass",
             () -> new CutGlassBlock(AbstractBlock.Properties.of(Material.GLASS)));
-    public static final RegistryObject<Block> KOLBASA = registerBlock("kolbasa",
-            () -> new KolbasaBlock(AbstractBlock.Properties.of(Material.CAKE)));
+    public static final RegistryObject<Block> KOLBASA = registerFoodBlock("kolbasa",
+            () -> new KolbasaBlock(AbstractBlock.Properties.of(Material.CAKE)), ModFoods.KOLBASA);
     public static final RegistryObject<Block> SHOT_GLASS = registerBlock("shot_glass",
             () -> new ShotGlassBlock(AbstractBlock.Properties.of(Material.GLASS)));
     public static final RegistryObject<Block> CONCRETE_WASTE = registerBlock("concrete_waste",
@@ -66,6 +68,13 @@ public class ModBlocks {
     private static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block) {
         ModItems.ITEMS.register(name, () -> new BlockItem(block.get(),
                 new Item.Properties().tab(ModItemTab.FURNITURE)));
+    }
+
+    private static <T extends Block> RegistryObject<T> registerFoodBlock(String name, Supplier<T> block, Food food) {
+        RegistryObject<T> toReturn = BLOCKS.register(name, block);
+        ModItems.ITEMS.register(name, () -> new BlockItem(toReturn.get(),
+                new Item.Properties().tab(ModItemTab.FURNITURE).food(food)));
+        return toReturn;
     }
 
     public static void register(IEventBus eventBus) {
