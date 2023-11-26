@@ -56,6 +56,8 @@ public class ModBlocks {
             () -> new ShotGlassBlock(AbstractBlock.Properties.of(Material.GLASS)));
     public static final RegistryObject<Block> CONCRETE_WASTE = registerBlock("concrete_waste",
             () -> new ConcreteWasteBlock(AbstractBlock.Properties.of(Material.STONE)));
+    public static final RegistryObject<Block> CHESS = registerBlock("chess",
+            () -> new ChessBlock(AbstractBlock.Properties.of(Material.STONE)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
