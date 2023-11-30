@@ -3,8 +3,11 @@ package com.Soviet.sovietmod.block.custom;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -27,6 +30,15 @@ public class VodkaBlock extends HorizontalBlock {
     }
 
     @Override
+    public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity playerEntity, Hand hand, BlockRayTraceResult rayTraceResult) {
+        if (playerEntity.isShiftKeyDown() && playerEntity.getItemInHand(hand).getItem() == Items.AIR) {
+            world.addFreshEntity(new ItemEntity(world, playerEntity.getX() + 0.5, playerEntity.getY() + 0.5, playerEntity.getZ() + 0.5, new ItemStack(this)));
+            world.removeBlock(pos, false);
+        }
+        return ActionResultType.sidedSuccess(world.isClientSide);
+    }
+
+    @Override
     protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(FACING);
     }
@@ -42,7 +54,7 @@ public class VodkaBlock extends HorizontalBlock {
         return SHAPE;
     }
 
-    public static VoxelShape makeShape(){
+    public static VoxelShape makeShape() {
         VoxelShape shape = VoxelShapes.empty();
         shape = VoxelShapes.join(shape, VoxelShapes.box(0.4375, 0, 0.4375, 0.5625, 0.01874999999999999, 0.5625), IBooleanFunction.OR);
         shape = VoxelShapes.join(shape, VoxelShapes.box(0.4375, 0.01562500000000002, 0.4218750000000001, 0.5625, 0.303125, 0.44062500000000004), IBooleanFunction.OR);
