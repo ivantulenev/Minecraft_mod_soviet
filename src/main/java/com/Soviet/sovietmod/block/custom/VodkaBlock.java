@@ -5,6 +5,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -21,6 +22,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
+import java.util.Objects;
 
 public class VodkaBlock extends HorizontalBlock {
     public static final VoxelShape SHAPE = makeShape();
@@ -32,10 +34,11 @@ public class VodkaBlock extends HorizontalBlock {
     @Override
     public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity playerEntity, Hand hand, BlockRayTraceResult rayTraceResult) {
         if (playerEntity.isShiftKeyDown() && playerEntity.getItemInHand(hand).getItem() == Items.AIR) {
-            world.addFreshEntity(new ItemEntity(world, playerEntity.getX() + 0.5, playerEntity.getY() + 0.5, playerEntity.getZ() + 0.5, new ItemStack(this)));
+            playerEntity.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(this));
             world.removeBlock(pos, false);
+            return ActionResultType.sidedSuccess(world.isClientSide);
         }
-        return ActionResultType.sidedSuccess(world.isClientSide);
+        return ActionResultType.PASS;
     }
 
     @Override

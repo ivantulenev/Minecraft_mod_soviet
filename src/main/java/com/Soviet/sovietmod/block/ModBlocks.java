@@ -5,6 +5,7 @@ import com.Soviet.sovietmod.block.custom.*;
 import com.Soviet.sovietmod.item.ModFoods;
 import com.Soviet.sovietmod.item.ModItemTab;
 import com.Soviet.sovietmod.item.ModItems;
+import com.Soviet.sovietmod.item.custom.VodkaItem;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
@@ -16,6 +17,7 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class ModBlocks {
@@ -29,8 +31,9 @@ public class ModBlocks {
             () -> new DiningTableBlock(AbstractBlock.Properties.of(Material.WOOD)));
     public static final RegistryObject<Block> KETTLE = registerBlock("kettle",
             () -> new KettleBlock(AbstractBlock.Properties.of(Material.METAL)));
-    public static final RegistryObject<Block> VODKA = registerBlock("vodka",
-            () -> new VodkaBlock(AbstractBlock.Properties.of(Material.GLASS)));
+    public static final RegistryObject<Block> VODKA = registerItemWithCustomBlock("vodka",
+            () -> new VodkaBlock(AbstractBlock.Properties.of(Material.GLASS)),
+            () -> new VodkaItem(ModBlocks.VODKA.get(), new Item.Properties().tab(ModItemTab.FURNITURE)));
 
     public static final RegistryObject<Block> RADIATION_BANNER = registerBlock("radiation_banner",
             () -> new RadiationBannerBlock(AbstractBlock.Properties.of(Material.METAL)));
@@ -64,6 +67,12 @@ public class ModBlocks {
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);
+        return toReturn;
+    }
+
+    private static <T extends Block, I extends BlockItem> RegistryObject<T> registerItemWithCustomBlock(String name, Supplier<T> block, Supplier<I> item) {
+        RegistryObject<T> toReturn = BLOCKS.register(name, block);
+        ModItems.ITEMS.register(name, item);
         return toReturn;
     }
 
