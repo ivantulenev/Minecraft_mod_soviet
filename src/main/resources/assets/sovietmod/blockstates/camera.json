@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "sovietmod:block/camera",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "sovietmod:block/camera"
+    },
+    "facing=south": {
+      "model": "sovietmod:block/camera",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "sovietmod:block/camera",
+      "y": 270
+    }
+  }
+}

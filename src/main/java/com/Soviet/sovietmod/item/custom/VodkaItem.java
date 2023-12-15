@@ -23,9 +23,8 @@ public class VodkaItem extends BlockItem {
     @Override
     public ItemStack finishUsingItem(ItemStack stack, World world, LivingEntity entity) {
         PlayerEntity player = (PlayerEntity) entity;
-
+        player.addEffect(new EffectInstance(Effects.CONFUSION, 3600));
         if (!player.isCreative()) {
-            entity.addEffect(new EffectInstance(Effects.POISON, 3600));
             stack.shrink(1);
             //TODO(duduc): change to custom bottle (maybe?)
             ItemStack emptyBottle = new ItemStack(Items.GLASS_BOTTLE);

@@ -10,6 +10,7 @@ import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.state.StateContainer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
@@ -39,6 +40,12 @@ public class VodkaBlock extends HorizontalBlock {
             return ActionResultType.sidedSuccess(world.isClientSide);
         }
         return ActionResultType.PASS;
+    }
+
+    @Override
+    public void playerDestroy(World world, PlayerEntity player, BlockPos pos, BlockState state, @Nullable TileEntity tileEntity, ItemStack stack) {
+        world.addFreshEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(this)));
+        super.playerDestroy(world, player, pos, state, tileEntity, stack);
     }
 
     @Override
