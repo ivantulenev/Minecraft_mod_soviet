@@ -2,10 +2,10 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "block/chess",
-		"1": "block/figure",
-		"2": "block/figure2",
-		"particle": "block/chess"
+		"0": "chess",
+		"1": "figure",
+		"2": "figure2",
+		"particle": "chess"
 	},
 	"elements": [
 		{
@@ -7039,8 +7039,32 @@
 				"up": {"uv": [6.5, 14.5, 6, 14], "texture": "#2"},
 				"down": {"uv": [14.5, 6, 14, 6.5], "texture": "#2"}
 			}
+		},
+		{
+			"from": [2, 0, 2],
+			"to": [14, 0.4, 14],
+			"color": 3,
+			"faces": {
+				"north": {"uv": [0, 0, 6, 0.2], "texture": "#missing"},
+				"east": {"uv": [0, 0, 6, 0.2], "texture": "#missing"},
+				"south": {"uv": [0, 0, 6, 0.2], "texture": "#missing"},
+				"west": {"uv": [0, 0, 6, 0.2], "texture": "#missing"},
+				"up": {"uv": [0, 0, 6, 6], "texture": "#missing"},
+				"down": {"uv": [0, 0, 6, 6], "texture": "#missing"}
+			}
 		}
 	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 8, 0],
+			"scale": [0.3, 1, 0.3]
+		},
+		"firstperson_righthand": {
+			"rotation": [-15.5, 51.25, 26],
+			"translation": [0, 8.75, 0],
+			"scale": [0.76, 1, 0.76]
+		}
+	},
 	"groups": [
 		{
 			"name": "group",
@@ -7146,6 +7170,12 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "VoxelShapes",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [541]
 		}
 	]
 }
