@@ -15,7 +15,7 @@ import net.minecraft.world.IBlockReader;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-public class VinylRecordPlayerKinoBlock extends HoriazontalBlock {
+public class VinylRecordPlayerKinoBlock extends HorizontalBlock {
 
     public static final VoxelShape SHAPE = makeShape();
 
