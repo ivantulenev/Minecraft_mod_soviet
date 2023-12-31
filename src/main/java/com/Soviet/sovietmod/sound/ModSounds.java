@@ -3,7 +3,6 @@ package com.Soviet.sovietmod.sound;
 import com.Soviet.sovietmod.Sovietmod;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.registry.Registry;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;

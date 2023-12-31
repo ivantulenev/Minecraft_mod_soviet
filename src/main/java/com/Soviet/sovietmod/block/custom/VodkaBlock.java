@@ -1,5 +1,6 @@
 package com.Soviet.sovietmod.block.custom;
 
+import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
@@ -23,16 +24,17 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-import java.util.Objects;
-
+import javax.annotation.ParametersAreNonnullByDefault;
 public class VodkaBlock extends HorizontalBlock {
     public static final VoxelShape SHAPE = makeShape();
 
     public VodkaBlock(Properties p_i48377_1_) {
-        super(p_i48377_1_);
+        super(p_i48377_1_);;
     }
 
     @Override
+    @ParametersAreNonnullByDefault
+    @MethodsReturnNonnullByDefault
     public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity playerEntity, Hand hand, BlockRayTraceResult rayTraceResult) {
         if (playerEntity.isShiftKeyDown() && playerEntity.getItemInHand(hand).getItem() == Items.AIR) {
             playerEntity.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(this));
@@ -43,6 +45,7 @@ public class VodkaBlock extends HorizontalBlock {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void playerDestroy(World world, PlayerEntity player, BlockPos pos, BlockState state, @Nullable TileEntity tileEntity, ItemStack stack) {
         world.addFreshEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(this)));
         super.playerDestroy(world, player, pos, state, tileEntity, stack);
@@ -60,6 +63,7 @@ public class VodkaBlock extends HorizontalBlock {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return SHAPE;
     }

@@ -11,6 +11,7 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 public class CameraBlock extends HorizontalBlock {
     public static final VoxelShape SHAPE_N_S = makeShape_N_S();
@@ -32,6 +33,7 @@ public class CameraBlock extends HorizontalBlock {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         switch (state.getValue(FACING)) {
             case EAST:

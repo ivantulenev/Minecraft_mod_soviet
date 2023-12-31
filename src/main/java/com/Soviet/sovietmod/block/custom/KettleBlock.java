@@ -13,6 +13,7 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.stream.Stream;
 
 public class KettleBlock extends HorizontalBlock {
@@ -38,6 +39,7 @@ public class KettleBlock extends HorizontalBlock {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         switch (state.getValue(FACING)) {
             case SOUTH:

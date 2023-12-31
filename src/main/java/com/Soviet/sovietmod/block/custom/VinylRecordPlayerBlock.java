@@ -6,7 +6,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.JukeboxBlock;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.Pose;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
@@ -36,7 +35,7 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-import java.util.Objects;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 public class VinylRecordPlayerBlock extends JukeboxBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
@@ -55,10 +54,13 @@ public class VinylRecordPlayerBlock extends JukeboxBlock {
         builder.add(LOCKED, HAS_RECORD, FACING);
     }
 
+    @Override
     public BlockState rotate(BlockState state, Rotation rotation) {
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
+    @Override
+    @ParametersAreNonnullByDefault
     public BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
@@ -71,6 +73,7 @@ public class VinylRecordPlayerBlock extends JukeboxBlock {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void setPlacedBy(World world, BlockPos pos, BlockState state, @Nullable LivingEntity livingEntity, ItemStack stack) {
         super.setPlacedBy(world, pos, state, livingEntity, stack);
         CompoundNBT compoundnbt = stack.getOrCreateTag();
@@ -84,6 +87,7 @@ public class VinylRecordPlayerBlock extends JukeboxBlock {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     @MethodsReturnNonnullByDefault
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return SHAPE;
@@ -99,9 +103,9 @@ public class VinylRecordPlayerBlock extends JukeboxBlock {
                     world.levelEvent(1010, pos, 0);
                     jukeboxtileentity.clearContent();
                     float f = 0.7F;
-                    double d0 = (double) (world.random.nextFloat() * 0.7F) + (double) 0.15F;
-                    double d1 = (double) (world.random.nextFloat() * 0.7F) + (double) 0.060000002F + 0.6D;
-                    double d2 = (double) (world.random.nextFloat() * 0.7F) + (double) 0.15F;
+                    double d0 = (double) (world.random.nextFloat() * f) + (double) 0.15F;
+                    double d1 = (double) (world.random.nextFloat() * f) + (double) 0.060000002F + 0.6D;
+                    double d2 = (double) (world.random.nextFloat() * f) + (double) 0.15F;
                     ItemStack itemstack1 = itemstack.copy();
                     ItemEntity itementity = new ItemEntity(world, (double) pos.getX() + d0, (double) pos.getY() + d1, (double) pos.getZ() + d2, itemstack1);
                     itementity.setDefaultPickUpDelay();
@@ -112,6 +116,7 @@ public class VinylRecordPlayerBlock extends JukeboxBlock {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void setRecord(IWorld world, BlockPos pos, BlockState state, ItemStack stack) {
         TileEntity tileentity = world.getBlockEntity(pos);
         if (tileentity instanceof JukeboxTileEntity) {
@@ -122,6 +127,7 @@ public class VinylRecordPlayerBlock extends JukeboxBlock {
 
     @MethodsReturnNonnullByDefault
     @Override
+    @ParametersAreNonnullByDefault
     public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult result) {
         System.out.println("use");
         if (state.getValue(HAS_RECORD) && !Screen.hasShiftDown() && !state.getValue(LOCKED)) {
@@ -150,6 +156,7 @@ public class VinylRecordPlayerBlock extends JukeboxBlock {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void onRemove(BlockState state, World world, BlockPos pos, BlockState state1, boolean b) {
         if (!state.is(state1.getBlock())) {
             this.dropRecording(world, pos);

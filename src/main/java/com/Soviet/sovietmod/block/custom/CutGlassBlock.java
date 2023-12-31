@@ -13,6 +13,7 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.stream.Stream;
 
 public class CutGlassBlock extends HorizontalBlock {
@@ -35,6 +36,7 @@ public class CutGlassBlock extends HorizontalBlock {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return SHAPE;
     }

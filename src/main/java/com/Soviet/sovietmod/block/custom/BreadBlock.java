@@ -9,9 +9,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 public class BreadBlock extends HorizontalBlock {
     public static final VoxelShape SHAPE_N_S = makeShape_N_S();
@@ -34,6 +34,7 @@ public class BreadBlock extends HorizontalBlock {
 
 
     @Override
+    @ParametersAreNonnullByDefault
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         switch (state.getValue(FACING)) {
             case EAST:

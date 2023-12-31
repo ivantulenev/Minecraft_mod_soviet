@@ -13,6 +13,7 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 public class DiningTableBlock extends HorizontalBlock {
     public static final VoxelShape SHAPE = makeShape();
@@ -33,6 +34,7 @@ public class DiningTableBlock extends HorizontalBlock {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return SHAPE;
     }

@@ -12,18 +12,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IWorld;
 import net.minecraft.state.StateContainer;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 public class DoubleTableBlock extends HorizontalBlock {
     public static final EnumProperty<DoubleTablePart> TABLE_PART = EnumProperty.create("part", DoubleTablePart.class);
@@ -58,7 +56,7 @@ public class DoubleTableBlock extends HorizontalBlock {
 
     @Override
     public void setPlacedBy(World world, BlockPos pos, BlockState state, @Nullable LivingEntity entity, ItemStack stack) {
-        world.setBlock(pos.above(),state.setValue(TABLE_PART, DoubleTablePart.UPPER), 3);
+        world.setBlock(pos.above(), state.setValue(TABLE_PART, DoubleTablePart.UPPER), 3);
     }
 
     @Override
@@ -70,17 +68,17 @@ public class DoubleTableBlock extends HorizontalBlock {
     public void playerWillDestroy(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
         if (!worldIn.isClientSide && player.isCreative()) {
             DoubleTablePart doubletablepart = state.getValue(TABLE_PART);
-            if(doubletablepart == DoubleTablePart.UPPER) {
+            if (doubletablepart == DoubleTablePart.UPPER) {
                 BlockPos blockPos = pos.below();
                 BlockState blockState = worldIn.getBlockState(blockPos);
-                if(blockState.getBlock()==state.getBlock()&&blockState.getValue(TABLE_PART)==DoubleTablePart.LOWER){
+                if (blockState.getBlock() == state.getBlock() && blockState.getValue(TABLE_PART) == DoubleTablePart.LOWER) {
                     worldIn.setBlock(blockPos, Blocks.AIR.defaultBlockState(), 35);
                 }
             }
-            if(doubletablepart == DoubleTablePart.LOWER) {
+            if (doubletablepart == DoubleTablePart.LOWER) {
                 BlockPos blockPos = pos.above();
                 BlockState blockState = worldIn.getBlockState(blockPos);
-                if(blockState.getBlock()==state.getBlock()&&blockState.getValue(TABLE_PART)==DoubleTablePart.UPPER){
+                if (blockState.getBlock() == state.getBlock() && blockState.getValue(TABLE_PART) == DoubleTablePart.UPPER) {
                     worldIn.setBlock(blockPos, Blocks.AIR.defaultBlockState(), 35);
                 }
             }
@@ -88,7 +86,8 @@ public class DoubleTableBlock extends HorizontalBlock {
         super.playerWillDestroy(worldIn, pos, state, player);
     }
 
-
+    @Override
+    @ParametersAreNonnullByDefault
     public BlockState updateShape(BlockState p_196271_1_, Direction p_196271_2_, BlockState p_196271_3_, IWorld p_196271_4_, BlockPos p_196271_5_, BlockPos p_196271_6_) {
         if (p_196271_2_ == getNeighbourDirection(p_196271_1_.getValue(TABLE_PART), p_196271_1_.getValue(FACING))) {
             return p_196271_3_.is(this) && p_196271_3_.getValue(TABLE_PART) != p_196271_1_.getValue(TABLE_PART) ? p_196271_1_.setValue(OCCUPIED, p_196271_3_.getValue(OCCUPIED)) : Blocks.AIR.defaultBlockState();
